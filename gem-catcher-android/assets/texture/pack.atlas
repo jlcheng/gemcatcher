@@ -1,0 +1,33 @@
+
+pack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Character Cat Girl
+  rotate: false
+  xy: 311, 24
+  size: 68, 90
+  orig: 101, 171
+  offset: 17, 20
+  index: -1
+Gem Blue
+  rotate: false
+  xy: 2, 2
+  size: 101, 112
+  orig: 101, 171
+  offset: 0, 1
+  index: -1
+Gem Green
+  rotate: false
+  xy: 105, 2
+  size: 101, 112
+  orig: 101, 171
+  offset: 0, 1
+  index: -1
+Gem Orange
+  rotate: false
+  xy: 208, 2
+  size: 101, 112
+  orig: 101, 171
+  offset: 0, 1
+  index: -1
