@@ -48,7 +48,7 @@ public class Gem extends Image {
 		// Some behaviors is best left implemented as part of the entity itself.
 		// 
 		rectangle.setPosition(getX(), getY());
-		if (getY() < 1) {
+		if (getY() <= 0f) {
 			remove();
 		}
 		if (Intersector.overlaps(rectangle, player.getRectangle())) {

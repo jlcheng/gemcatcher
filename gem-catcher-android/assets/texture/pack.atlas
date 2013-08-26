@@ -31,3 +31,10 @@ Gem Orange
   orig: 101, 171
   offset: 0, 1
   index: -1
+dropbox
+  rotate: false
+  xy: 381, 44
+  size: 54, 70
+  orig: 70, 70
+  offset: 8, 0
+  index: -1
