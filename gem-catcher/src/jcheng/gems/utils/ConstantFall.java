@@ -1,6 +1,3 @@
-/**
- * 
- */
 package jcheng.gems.utils;
 
 import com.badlogic.gdx.scenes.scene2d.Action;

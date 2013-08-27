@@ -40,12 +40,15 @@ extends Group {
 		
 		countDown = 1 + random(1f);
 		if (gemsCount < gemsMax) {
-			GemColor[] gemColors = GemColor.values();
-			Gem g = new Gem(gemColors[random(gemColors.length-1)], screen.getAtlas(), player);
+			Gem g = new Gem(randomEnum(GemColor.class) , screen.getAtlas(), player);
 			g.setX(random(getStage().getWidth()-g.getWidth()));
 			g.setY(getStage().getHeight());
 			addActor(g);				
 		}
 	}
-		
+	
+	private static <T extends Enum<T>> T randomEnum(Class<T> enumClass) {
+		T[] values = enumClass.getEnumConstants();
+		return values[random(values.length-1)];
+	}
 }

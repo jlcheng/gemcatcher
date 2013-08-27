@@ -84,7 +84,7 @@ public abstract class AbstractScreen
     @Override
     public void dispose()
     {
-        Gdx.app.log( GemCatcher.LOG, "Disposing screen: " + getName() );
+        GemCatcher.log( "Disposing screen: " + getName() );
         if( font != null ) font.dispose();
         if( batch != null ) batch.dispose();
         if( atlas != null ) atlas.dispose();

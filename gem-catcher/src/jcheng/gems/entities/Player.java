@@ -2,7 +2,6 @@ package jcheng.gems.entities;
 
 import jcheng.gems.entities.Gem.GemColor;
 import jcheng.gems.screens.AbstractScreen;
-import jcheng.gems.utils.Draggable;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,7 +20,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 public class Player extends Group {
 
 	private final Image girl;
-	private final Image dropbox;
 	private final Rectangle rectangle = new Rectangle();
 	private final BitmapFont font;
 	private int blueGems = 0;
@@ -32,29 +30,19 @@ public class Player extends Group {
 		super();
 		TextureAtlas atlas = screen.getAtlas();
 		this.girl = new Image(atlas.findRegion("Character Cat Girl"));
-		this.dropbox = new Image(screen.getAtlas().findRegion("dropbox"));
 		this.font = screen.getFont();
 		rectangle.setSize(girl.getWidth(), girl.getHeight());
 		
-		this.dropbox.addListener(new Draggable(girl));
 		addActor(girl);
-		addActor(dropbox);
 	}
-	
+
+	// Use our custom drawing algorithm
     @Override
     public void draw(SpriteBatch batch, float parentAlpha) {
-    	// Use our custom drawing algorithm
+    	// super.draw will take care of drawing girl object    	
+    	super.draw(batch, parentAlpha);
     	Stage stage = getStage(); if (stage == null) return;
-    	
-    	// Draw girl normally
-    	girl.draw(batch, parentAlpha);
-    	
-    	
-    	// Dropbox always drawn below the girl
-    	float centerX = girl.getX() + (girl.getWidth()/2f);
-    	dropbox.setPosition((centerX - (dropbox.getWidth()/2f)), girl.getY() - dropbox.getHeight());
-    	dropbox.draw(batch, parentAlpha);
-    	
+    	    	
     	// Draw scores
     	float height = stage.getHeight() - 10;
         font.draw(batch, "Blue: " + blueGems, 5, height);
@@ -80,6 +68,16 @@ public class Player extends Group {
     @Override
     public float getY(){
     	return girl.getY();
+    }
+    
+    @Override
+    public float getWidth() {
+    	return girl.getWidth();
+    }
+    
+    @Override
+    public float getHeight() {
+    	return girl.getHeight();
     }
     
 	public void increment(Gem gem) {
