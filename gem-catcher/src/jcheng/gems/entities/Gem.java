@@ -2,6 +2,7 @@ package jcheng.gems.entities;
 
 import jcheng.gems.utils.ConstantFall;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
@@ -26,19 +27,28 @@ public class Gem extends Image {
 	private final Player player;
 	private final Rectangle rectangle = new Rectangle();
 	private final GemColor gemColor;
+	private final DebugRectangle rectImage;
 	
-	public Gem(GemColor gemColor, TextureAtlas atlas, Player player) {
+	public Gem(GemColor gemColor, TextureAtlas atlas, Player player, DebugRectangle rectImage) {
 		super(atlas.findRegion("Gem " + gemColor.name()));
 		this.gemColor = gemColor;
 		this.player = player;
+		this.setWidth(this.getWidth()*0.5f);
+		this.setHeight(this.getHeight()*0.5f);
 		rectangle.setSize(getWidth(), getHeight());
-		this.scale(-0.5f);
+		this.rectImage = rectImage;
 		
 		//
 		// Some behaviors can be reused and coded as an 'Action'.
 		// 
 		addAction(new ConstantFall()); 
 	}
+	
+	@Override
+    public void draw(SpriteBatch batch, float parentAlpha) {
+		rectImage.drawAround(batch, parentAlpha, this);
+		super.draw(batch, parentAlpha);
+	}	
 	
 	@Override
 	public void act(float delta) {

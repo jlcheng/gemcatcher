@@ -25,6 +25,7 @@ public class Player extends Group {
 	private int blueGems = 0;
 	private int greenGems = 0;
 	private int orangeGems = 0;
+	private DebugRectangle rectImage;
 	
 	public Player(AbstractScreen screen) {
 		super();
@@ -32,17 +33,19 @@ public class Player extends Group {
 		this.girl = new Image(atlas.findRegion("Character Cat Girl"));
 		this.font = screen.getFont();
 		rectangle.setSize(girl.getWidth(), girl.getHeight());
-		
 		addActor(girl);
+		this.rectImage = new DebugRectangle(atlas);
+		
 	}
 
 	// Use our custom drawing algorithm
     @Override
     public void draw(SpriteBatch batch, float parentAlpha) {
+    	rectImage.drawAround(batch, parentAlpha, girl);
     	// super.draw will take care of drawing girl object    	
     	super.draw(batch, parentAlpha);
     	Stage stage = getStage(); if (stage == null) return;
-    	    	
+    	    	    	
     	// Draw scores
     	float height = stage.getHeight() - 10;
         font.draw(batch, "Blue: " + blueGems, 5, height);

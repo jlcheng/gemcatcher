@@ -28,11 +28,9 @@ public abstract class AbstractScreen
     private TextureAtlas atlas;
 
     public AbstractScreen(
-    		GemCatcher game ) {
+    		GemCatcher game, Stage stage ) {
         this.game = game;
-        int width = GAME_VIEWPORT_WIDTH;
-        int height = GAME_VIEWPORT_HEIGHT;
-        this.stage = new Stage( width, height, true );
+        this.stage = stage;
     }
 
     protected String getName() {
@@ -84,7 +82,7 @@ public abstract class AbstractScreen
     @Override
     public void dispose()
     {
-        GemCatcher.log( "Disposing screen: " + getName() );
+        GemCatcher.log( "AbstractScreen.dispose()" );
         if( font != null ) font.dispose();
         if( batch != null ) batch.dispose();
         if( atlas != null ) atlas.dispose();

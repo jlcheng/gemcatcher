@@ -25,11 +25,13 @@ extends Group {
 	private final Player player;
 	private final int gemsMax = 6;
 	private final int gemsCount = 0;
+	private final DebugRectangle rectImage;
 
 	public GemSpout(AbstractScreen screen, Player player) {
 		super();
 		this.screen = screen;
 		this.player = player;
+		this.rectImage = new DebugRectangle(screen.getAtlas());
 	}
 	
 	@Override
@@ -40,7 +42,7 @@ extends Group {
 		
 		countDown = 1 + random(1f);
 		if (gemsCount < gemsMax) {
-			Gem g = new Gem(randomEnum(GemColor.class) , screen.getAtlas(), player);
+			Gem g = new Gem(randomEnum(GemColor.class) , screen.getAtlas(), player, rectImage);
 			g.setX(random(getStage().getWidth()-g.getWidth()));
 			g.setY(getStage().getHeight());
 			addActor(g);				
