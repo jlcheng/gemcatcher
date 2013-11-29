@@ -7,7 +7,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -24,7 +23,6 @@ public abstract class AbstractScreen
     protected final Stage stage;
 
     private BitmapFont font;
-    private SpriteBatch batch;
     private TextureAtlas atlas;
 
     public AbstractScreen(
@@ -63,7 +61,6 @@ public abstract class AbstractScreen
         // Update the actors 
 		stage.act( delta );
 
-
         // Render
         // clear the screen with black
         Gdx.gl.glClearColor( 0.0f, 0.0f, 0.0f, 1f );
@@ -84,7 +81,6 @@ public abstract class AbstractScreen
     {
         GemCatcher.log( "AbstractScreen.dispose()" );
         if( font != null ) font.dispose();
-        if( batch != null ) batch.dispose();
         if( atlas != null ) atlas.dispose();
     }
     

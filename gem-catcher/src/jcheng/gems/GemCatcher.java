@@ -13,7 +13,7 @@ public class GemCatcher extends Game {
 		
 	@Override
 	public void create() {		
-        setScreen( new PlayScreen( this ) );
+        setScreen(new PlayScreen(this));
 	}
 
 

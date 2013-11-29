@@ -4,6 +4,7 @@ import jcheng.gems.GemCatcher;
 import jcheng.gems.entities.DebugRectangle;
 import jcheng.gems.entities.GemSpout;
 import jcheng.gems.entities.Player;
+import jcheng.gems.entities.Scoreboard;
 import jcheng.gems.utils.DragActor;
 
 import com.badlogic.gdx.Input;
@@ -11,17 +12,16 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class PlayScreen extends AbstractScreen {
 	
-	private final Player player;
-	private final GemSpout gemSpout;
-
 	public PlayScreen(GemCatcher game) {
 		super(game, new PlayStage(GAME_VIEWPORT_WIDTH, GAME_VIEWPORT_HEIGHT));
-		player = new Player(this);
+		Player player = new Player(this);
 		player.setPosition(0, 0);
-		gemSpout = new GemSpout(this, player);
+		GemSpout gemSpout = new GemSpout(this, player);
 		stage.addActor(gemSpout);
 		stage.addActor(player);
 		stage.addListener(new DragActor(player));
+		Scoreboard scoreBoard = new Scoreboard(this, player);
+		stage.addActor(scoreBoard);
 	}
 
 	@Override
